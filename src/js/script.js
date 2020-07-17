@@ -7,36 +7,33 @@ const Theme = {
 
 const btnSwitch = document.querySelector('.js-switch-input')
 const themeSwitch = document.querySelector('body')
+const checkedTheme = document.getElementById("theme-switch-control");
 
 themeSwitch.classList.add(Theme.LIGHT)
 
 const savedTheme = localStorage.getItem('checked');
-console.log(savedTheme)
 
 const checkBox = () => {
 	if (savedTheme === 'true') {
 		themeSwitch.classList.replace(Theme.LIGHT, Theme.DARK);
-		document.getElementById("theme-switch-control").checked = true;
+		checkedTheme.checked = true;
 		return
 	} else {
 		themeSwitch.classList.replace(Theme.DARK, Theme.LIGHT);
-		document.getElementById("theme-switch-control").checked = false;
+		checkedTheme.checked = false;
 	}
 }
 checkBox()
 
 const changeTheme = () => {
-	if (themeSwitch.classList.contains(Theme.LIGHT)) {
+	if (event.target.checked) {
 		themeSwitch.classList.replace(Theme.LIGHT, Theme.DARK);
-		document.getElementById("theme-switch-control").checked = true;
 		localStorage.setItem('checked', 'true');
 	}
 	else {
 		themeSwitch.classList.replace(Theme.DARK, Theme.LIGHT);
-		document.getElementById("theme-switch-control").checked = false;
 		localStorage.setItem('checked', 'false');
 	}
-	console.log(localStorage.getItem('checked'));
 };
 
 
